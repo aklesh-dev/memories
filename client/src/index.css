@@ -1,0 +1,28 @@
+.appBar {
+    border-radius: 15px;
+    margin: 30px 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    
+    
+  }
+  .heading {
+    color: rgba(0,183,255, 1);
+  }
+  .image {
+    margin-left: 15px;  
+    
+  }
+  .mainContainer {
+    display: flex;
+    flex-direction: column-reverse; /* Reversed column layout by default */
+
+    /* Mobile-first styles */
+    /* For devices with screen width up to 600px */
+    @media screen and (max-width: 600px) {
+        /* Change the flex-direction to column */
+        flex-direction: column;
+    }
+}
