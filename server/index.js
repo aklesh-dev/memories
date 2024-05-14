@@ -4,6 +4,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js'
+import userRoutes from './routes/users.js';
+
 // Helmet helps you secure your Express apps by setting various HTTP headers.
 import helmet  from 'helmet';
 
@@ -43,6 +45,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 
 app.use('/posts', postRoutes);
+app.use('/user', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 const CONNECTION_URL = process.env.CONNECTION_URL;

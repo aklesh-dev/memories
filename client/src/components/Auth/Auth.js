@@ -7,7 +7,9 @@ import Icon from './icon';
 import { useDispatch } from 'react-redux';
 import {jwtDecode} from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import { signin, signup } from '../../actions/auth';
 
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const Auth = () => {
 
@@ -16,24 +18,36 @@ const Auth = () => {
 
     const [isSignup, setIsSignup] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [formData, setFormData] = useState(initialState);
 
+    // Toggling show/hide password
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();     // Preventing default form submission behavior
+        
+        if (isSignup) {
+            dispatch(signup(formData, navigate));
+        } else {
+            dispatch(signin(formData, navigate));            
+        }
 
     };
-    const handleChange = () => {
-
+    //
+    const handleChange = (e) => {
+        // Updating form data on input change
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const switchMode = () => {
+        // Toggling between sign up and sign in modes
         setIsSignup((prevIsSignup) => !prevIsSignup);
         handleShowPassword(false);
     };
 
     const googleSuccess = async (res) => {
-        const credential = res.credential;
-        const decodedToken = jwtDecode(credential); // Decode the JWT
+        const credential = res.credential;  // Extracting credential from response
+        const decodedToken = jwtDecode(credential); // Decode the JWT token
 
         // Extract the user's information and the token from the decoded token
         const result = decodedToken;

@@ -45,7 +45,7 @@ const Navbar = () => {
             <Toolbar style={{ display: 'flex', justifyContent: 'flex-end', width: '400px' }}>
                 {user && user.result ? ( // Check if user and user.result are defined
                     <div style={{ display: 'flex', justifyContent: "space-between", width: '300px' }}>
-                        <Avatar style={{ color: 'purple', backgroundColor: 'purple' }} alt={user.result.name} src={user.result.picture}>
+                        <Avatar style={{ color: 'white', backgroundColor: 'purple' }} alt={user.result.name} src={user.result.picture}>
                             {user.result.name.charAt(0)} {/* Accessing first character of the name */}
                         </Avatar>
                         <Typography style={{ display: 'flex', alignItems: 'center' }} variant='h6' >
