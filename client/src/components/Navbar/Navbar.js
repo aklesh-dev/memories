@@ -3,6 +3,8 @@ import { AppBar, Avatar, Button, Toolbar, Typography } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import memories from '../images/memories.png'
 import { useDispatch } from 'react-redux';
+import {jwtDecode} from 'jwt-decode';
+
 
 
 const Navbar = () => {
@@ -22,6 +24,14 @@ const Navbar = () => {
     useEffect(() => {
 
         const token = user?.token;
+        // Check if token is not null
+        if (token) {
+            const decodedToken = jwtDecode(token);
+            // Check if token is expired
+            if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
+
+
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
 
