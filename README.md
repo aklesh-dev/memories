@@ -12,8 +12,8 @@ This project is a RESTful API client built using Axios, a popular JavaScript lib
 - Like Post: Like a post using the likePost function, which sends a PATCH request to /posts/{id}/likePost.
 
 ### -User Authentication
--Sign In: Authenticate a user using the signIn function, which sends a POST request to /user/signin with the user's credentials.
--Sign Up: Register a new user using the signUp function, which sends a POST request to /user/signup with the user's registration data.
+- Sign In: Authenticate a user using the signIn function, which sends a POST request to /user/signin with the user's credentials.
+- Sign Up: Register a new user using the signUp function, which sends a POST request to /user/signup with the user's registration data.
 
 ### -Token-based Authentication
 The client uses token-based authentication, where the user's token is stored in local storage. The token is included in the Authorization header of each request using an Axios interceptor.
